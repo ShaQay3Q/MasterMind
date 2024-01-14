@@ -11,8 +11,8 @@ import (
 
 func TestCompare(t *testing.T) {
 
-	answer := combination{"R", "R", "R", "R"}
-	guess := combination{"R", "R", "R", "R"}
+	answer := combination{Red, Red, Red, Red}
+	guess := combination{Red, Red, Red, Red}
 
 	res := compare(answer, guess)
 	require.Equal(t, hint{4, 0}, res)
