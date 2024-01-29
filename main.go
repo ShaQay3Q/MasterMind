@@ -22,9 +22,20 @@ type hint struct {
 }
 
 func compare(answer combination, guess combination) hint {
+
+	res := compareSameIndexes(answer, guess)
+
+	return res
+}
+
+func compareSameIndexes(answer combination, guess combination) hint {
 	var res hint
-	res.black = 4
-	res.white = 0
+
+	for i := range answer {
+		if answer[i] == guess[i] {
+			res.black += 1
+		}
+	}
 
 	return res
 }
