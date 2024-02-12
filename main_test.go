@@ -48,3 +48,11 @@ func TestCompareSameIndexes02(t *testing.T) {
 
 	require.Equal(t, hint{3, 0}, res)
 }
+
+func TestPop(t *testing.T) {
+	combi := combination{Red, Yellow, Blue, Green}
+
+	res := combi[1]
+
+	require.Equal(t, Yellow, res)
+}

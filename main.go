@@ -21,6 +21,12 @@ type hint struct {
 	black, white int
 }
 
+func pop(combination combination, i int) [1]color {
+	var res [1]color
+	res[i] = combination[i]
+	return res
+}
+
 func compare(answer combination, guess combination) hint {
 
 	res := compareSameIndexes(answer, guess)
