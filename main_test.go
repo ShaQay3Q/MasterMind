@@ -22,7 +22,7 @@ import (
 func TestCompareSameIndexes(t *testing.T) {
 
 	answer := combination{Red, Yellow, Blue, Green}
-	guess := combination{Red, Yellow, Blue, Purple}
+	guess := combination{Red, Yellow, Blue, Green}
 
 	res := compareSameIndexes(answer, guess)
 

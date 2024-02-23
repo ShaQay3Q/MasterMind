@@ -38,7 +38,9 @@ func compareSameIndexes(answer combination, guess combination) hint {
 	var res hint
 
 	for i := range answer {
-		if answer[i] == guess[i] {
+		a := sliceIt(answer, i)
+		g := sliceIt(guess, i)
+		if compare(a, g) {
 			res.black += 1
 		}
 	}
@@ -48,6 +50,7 @@ func compareSameIndexes(answer combination, guess combination) hint {
 
 // compare compares only two slices of the length 1 together
 func compare(answer color, guess color) bool {
+
 	if answer == guess {
 		return true
 	}
