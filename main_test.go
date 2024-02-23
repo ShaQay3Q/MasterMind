@@ -104,8 +104,8 @@ func TestSliceIt(t *testing.T) {
 }
 
 func TestAddToList(t *testing.T) {
-	var list []int
-	list = addToList(1)
+	var list []entry
+	list = addToList(Red, 1)
 
-	require.Equal(t, []int{1}, list)
+	require.Equal(t, entry{Red, 1}, list)
 }

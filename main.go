@@ -44,7 +44,7 @@ func compareSameIndexes(answer combination, guess combination) hint {
 				res.black += 1
 				break
 			} else if compare(a, g) && i != j {
-				res.white = len(addToList(j))
+				res.white = len(addToList(a, j))
 				break
 			}
 		}
