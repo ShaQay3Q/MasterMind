@@ -19,7 +19,7 @@ import (
 // 	require.Equal(t, hint{4, 0}, res)
 // }
 
-func TestCompareSameIndexes(t *testing.T) {
+func TestCompareSameIndexes01(t *testing.T) {
 
 	answer := combination{Red, Yellow, Blue, Green}
 	guess := combination{Red, Yellow, Blue, Green}
@@ -49,12 +49,24 @@ func TestCompareSameIndexes02(t *testing.T) {
 	require.Equal(t, hint{3, 0}, res)
 }
 
-func TestPop(t *testing.T) {
-	combi := combination{Red, Yellow, Blue, Green}
+func TestCompareSameIndexes03(t *testing.T) {
 
-	res := combi[1]
+	answer := combination{Red, Yellow, Blue, Green}
+	guess := combination{Red, Yellow, Green, Blue}
 
-	require.Equal(t, Yellow, res)
+	res := compareSameIndexes(answer, guess)
+
+	require.Equal(t, hint{2, 2}, res)
+}
+
+func TestCompareSameIndexes04(t *testing.T) {
+
+	answer := combination{Blue, Yellow, Blue, Green}
+	guess := combination{Red, Yellow, Green, Blue}
+
+	res := compareSameIndexes(answer, guess)
+
+	require.Equal(t, hint{1, 2}, res)
 }
 
 func TestCompare(t *testing.T) {
@@ -89,4 +101,11 @@ func TestSliceIt(t *testing.T) {
 	slc := sliceIt(combi, i)
 
 	require.Equal(t, Red, slc)
+}
+
+func TestAddToList(t *testing.T) {
+	var list []int
+	list = addToList(1)
+
+	require.Equal(t, []int{1}, list)
 }

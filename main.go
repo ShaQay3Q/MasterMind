@@ -21,10 +21,9 @@ type hint struct {
 	black, white int
 }
 
-func pop(combination combination, i int) [1]color {
-	var res [1]color
-	res[i] = combination[i]
-	return res
+type entry struct {
+	color color
+	dig   int
 }
 
 // func compareGuessToAnswer(answer combination, guess combination) hint {
@@ -39,12 +38,17 @@ func compareSameIndexes(answer combination, guess combination) hint {
 
 	for i := range answer {
 		a := sliceIt(answer, i)
-		g := sliceIt(guess, i)
-		if compare(a, g) {
-			res.black += 1
+		for j := range guess {
+			g := sliceIt(guess, j)
+			if compare(a, g) && i == j {
+				res.black += 1
+				break
+			} else if compare(a, g) && i != j {
+				res.white = len(addToList(j))
+				break
+			}
 		}
 	}
-
 	return res
 }
 
@@ -62,4 +66,19 @@ func sliceIt(combi combination, i int) color {
 	slc := combi[i : i+1]
 	color := slc[0]
 	return color
+}
+
+func addToList(col color, dig int) []entry {
+
+	var list []entry
+	if len(list) == 0 {
+		list = append(list, entry{col, dig})
+	} else {
+		for i := 0; i < len(list); i++ {
+			if col != list[i].color && dig != list[i].dig {
+				list = append(list, entry{col, dig})
+			}
+		}
+	}
+	return list
 }
