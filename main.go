@@ -68,15 +68,15 @@ func sliceIt(combi combination, i int) color {
 	return color
 }
 
-func addToList(col color, dig int) []entry {
+func addToList(col color, dig int) *[]entry {
 
-	var list []entry
-	if len(list) == 0 {
-		list = append(list, entry{col, dig})
+	var list *[]entry
+	if len(*list) == 0 {
+		*list = append(*list, entry{col, dig})
 	} else {
-		for i := 0; i < len(list); i++ {
+		for i := 0; i < len(*list); i++ {
 			if col != list[i].color && dig != list[i].dig {
-				list = append(list, entry{col, dig})
+				*list = append(*list, entry{col, dig})
 			}
 		}
 	}
