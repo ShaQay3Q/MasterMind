@@ -44,7 +44,8 @@ func compareSameIndexes(answer combination, guess combination) hint {
 				res.black += 1
 				break
 			} else if compare(a, g) && i != j {
-				res.white = len(addToList(a, j))
+				list := []entry{}
+				res.white = len(addToList(a, j, list))
 				break
 			}
 		}
@@ -68,17 +69,18 @@ func sliceIt(combi combination, i int) color {
 	return color
 }
 
-func addToList(col color, dig int) *[]entry {
-
-	var list *[]entry
-	if len(*list) == 0 {
-		*list = append(*list, entry{col, dig})
+func addToList(col color, dig int, input []entry) []entry {
+	list := input
+	newEntry := entry{col, dig}
+	if len(list) == 0 {
+		list = append(list, newEntry)
 	} else {
-		for i := 0; i < len(*list); i++ {
-			if col != list[i].color && dig != list[i].dig {
-				*list = append(*list, entry{col, dig})
+		for i := 0; i < len(list); i++ {
+			if col == list[i].color && dig == list[i].dig {
+				return list
 			}
 		}
+		list = append(list, newEntry)
 	}
 	return list
 }
