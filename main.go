@@ -27,12 +27,12 @@ func pop(combination combination, i int) [1]color {
 	return res
 }
 
-func compare(answer combination, guess combination) hint {
+// func compareGuessToAnswer(answer combination, guess combination) hint {
 
-	res := compareSameIndexes(answer, guess)
+// 	res := compareSameIndexes(answer, guess)
 
-	return res
-}
+// 	return res
+// }
 
 func compareSameIndexes(answer combination, guess combination) hint {
 	var res hint
@@ -44,4 +44,19 @@ func compareSameIndexes(answer combination, guess combination) hint {
 	}
 
 	return res
+}
+
+// compare compares only two slices of the length 1 together
+func compare(answer color, guess color) bool {
+	if answer == guess {
+		return true
+	}
+	return false
+}
+
+// sliceIt get an specific index from combi and parse it into color
+func sliceIt(combi combination, i int) color {
+	slc := combi[i : i+1]
+	color := slc[0]
+	return color
 }
