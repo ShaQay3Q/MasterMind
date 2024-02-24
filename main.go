@@ -26,15 +26,10 @@ type entry struct {
 	dig   int
 }
 
-// func compareGuessToAnswer(answer combination, guess combination) hint {
+func compareIndexes(answer combination, guess combination) hint {
 
-// 	res := compareSameIndexes(answer, guess)
-
-// 	return res
-// }
-
-func compareSameIndexes(answer combination, guess combination) hint {
 	var res hint
+	list := []entry{}
 
 	for i := range answer {
 		a := sliceIt(answer, i)
@@ -44,7 +39,7 @@ func compareSameIndexes(answer combination, guess combination) hint {
 				res.black += 1
 				break
 			} else if compare(a, g) && i != j {
-				list := []entry{}
+				list = addToList(a, j, list)
 				res.white = len(addToList(a, j, list))
 				break
 			}
