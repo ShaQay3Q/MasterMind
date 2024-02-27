@@ -12,7 +12,7 @@ const (
 	Green
 	Yellow
 	Purple
-	Indigo
+	Indigito
 )
 
 type combination [4]color
@@ -23,7 +23,7 @@ type hint struct {
 
 type entry struct {
 	color color
-	dig   int
+	digit int
 }
 
 func compareIndexes(answer combination, guess combination) hint {
@@ -64,18 +64,32 @@ func sliceIt(combi combination, i int) color {
 	return color
 }
 
-func addToList(col color, dig int, input []entry) []entry {
-	list := input
-	newEntry := entry{col, dig}
-	if len(list) == 0 {
+func addToList(col color, digit int, list []entry) []entry {
+
+	newEntry := entry{col, digit}
+	check := colorAndIndexThere(list, newEntry)
+
+	switch {
+	case len(list) == 0:
 		list = append(list, newEntry)
-	} else {
-		for i := 0; i < len(list); i++ {
-			if col == list[i].color && dig == list[i].dig {
-				return list
-			}
+		return list
+	case len(list) != 0:
+		switch {
+		case check == true:
+			break
+		case check != true:
+			list = append(list, newEntry)
+			break
 		}
-		list = append(list, newEntry)
 	}
 	return list
+}
+
+func colorAndIndexThere(list []entry, newEntry entry) bool {
+	for i := 0; i < len(list); i++ {
+		if newEntry.color == list[i].color && newEntry.digit == list[i].digit {
+			return true
+		}
+	}
+	return false
 }
