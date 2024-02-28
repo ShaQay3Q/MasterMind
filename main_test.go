@@ -103,17 +103,17 @@ func TestAddToList(t *testing.T) {
 	require.Equal(t, []entry{{Red, 1}, {Red, 2}, {Blue, 1}}, list)
 }
 
-func TestColorIndexcheck(t *testing.T) {
+func TestSameColorAndIndex(t *testing.T) {
 
 	list := []entry{{Red, 1}}
 	newEntry := entry{Red, 1}
 
-	require.True(t, checkForColorAndIndex(newEntry, list))
+	require.True(t, sameColorAndIndex(newEntry, list))
 
 	list = []entry{{Red, 1}, {Blue, 2}}
 	newEntry = entry{Red, 2}
 
-	require.False(t, checkForColorAndIndex(newEntry, list))
+	require.False(t, sameColorAndIndex(newEntry, list))
 }
 
 // func TestGiveHint(t *testing.T){

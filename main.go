@@ -67,17 +67,14 @@ func sliceIt(combi combination, i int) color {
 func addToList(col color, digit int, list []entry) []entry {
 
 	newEntry := entry{col, digit}
-	check := checkForColorAndIndex(newEntry, list)
-
 	switch {
 	case len(list) == 0:
 		list = append(list, newEntry)
 		return list
 	case len(list) != 0:
-		switch {
-		case check == true:
+		if sameColorAndIndex(newEntry, list) {
 			break
-		case check != true:
+		} else {
 			list = append(list, newEntry)
 			break
 		}
@@ -85,8 +82,8 @@ func addToList(col color, digit int, list []entry) []entry {
 	return list
 }
 
-func checkForColorAndIndex(newEntry entry, list []entry) bool {
-	for i := 0; i < len(list); i++ {
+func sameColorAndIndex(newEntry entry, list []entry) bool {
+	for i := range list {
 		if newEntry.color == list[i].color && newEntry.digit == list[i].digit {
 			return true
 		}
