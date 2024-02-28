@@ -54,11 +54,7 @@ func compareIndexes(answer combination, guess combination) hint {
 
 // compare compares only two slices of the length 1 together
 func compare(answer color, guess color) bool {
-
-	if answer == guess {
-		return true
-	}
-	return false
+	return answer == guess
 }
 
 // sliceIt get an specific index from combi and parse it into color
