@@ -35,13 +35,17 @@ func compareIndexes(answer combination, guess combination) hint {
 		a := sliceIt(answer, i)
 		for j := range guess {
 			g := sliceIt(guess, j)
-			if compare(a, g) && i == j {
-				res.black += 1
-				break
-			} else if compare(a, g) && i != j {
-				list = addToList(a, j, list)
-				res.white = len(addToList(a, j, list))
-				break
+			switch {
+			case compare(a, g):
+				switch {
+				case i == j:
+					res.black += 1
+					break
+				case i != j:
+					list = addToList(a, j, list)
+					res.white = len(addToList(a, j, list))
+					break
+				}
 			}
 		}
 	}

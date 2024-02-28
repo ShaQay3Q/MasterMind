@@ -115,3 +115,7 @@ func TestColorIndexcheck(t *testing.T) {
 
 	require.False(t, checkForColorAndIndex(newEntry, list))
 }
+
+// func TestGiveHint(t *testing.T){
+
+// }
