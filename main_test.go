@@ -116,6 +116,39 @@ func TestSameColorAndIndex(t *testing.T) {
 	require.False(t, sameColorAndIndex(newEntry, list))
 }
 
-// func TestGiveHint(t *testing.T){
+// NOTE: I want to find a way to break down the giveHint into 2 functions. One give back BLACK hints
+// the other one return only WHITE hints
 
+// func TestGiveHint(t *testing.T) {
+// 	guess := combination{
+// 		Red,
+// 		Blue,
+// 		Yellow,
+// 		Green,
+// 	}
+
+// 	answer := combination{
+// 		Red,
+// 		Blue,
+// 		Yellow,
+// 		Green,
+// 	}
+
+// 	require.Equal(t, hint{4, 0}, giveHint(guess, answer))
+
+// 	guess = combination{
+// 		Red,
+// 		Blue,
+// 		Yellow,
+// 		Purple,
+// 	}
+
+// 	answer = combination{
+// 		Red,
+// 		Blue,
+// 		Yellow,
+// 		Green,
+// 	}
+
+// 	require.Equal(t, hint{3, 0}, giveHint(guess, answer))
 // }
