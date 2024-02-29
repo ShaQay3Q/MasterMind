@@ -173,11 +173,21 @@ func TestNeedWhiteHint(t *testing.T) {
 	require.False(t, needWhiteHint(a, g, i, j))
 }
 
-// func TestAddWhiteHint(t *testing.T) {
+func TestAddBlackHint(t *testing.T) {
 
-// 	i := 1
-// 	h := hint{}
+	i := 1
+	h := hint{}
 
-// 	h.black = addWhiteHint(i)
-// 	require.Equal(t, 2, h.black)
-// }
+	h.black = addBlackHint(i)
+	require.Equal(t, 2, h.black)
+}
+
+// AddWhiteHint is in process
+func TestAddWhiteHint(t *testing.T) {
+
+	i := 1
+	h := hint{}
+
+	h.white = addWhiteHint(i)
+	require.Equal(t, 2, h.white)
+}

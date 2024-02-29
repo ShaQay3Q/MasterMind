@@ -37,7 +37,7 @@ func compareIndexes(answer combination, guess combination) hint {
 			g := sliceIt(guess, j)
 			switch {
 			case needBlackHint(a, g, i, j):
-				res.black += 1
+				addBlackHint(res.black)
 				break
 			case needWhiteHint(a, g, i, j):
 				list = addToList(a, j, list)
@@ -47,6 +47,10 @@ func compareIndexes(answer combination, guess combination) hint {
 		}
 	}
 	return res
+}
+
+func addBlackHint(i int) int {
+	return i + 1
 }
 
 func needBlackHint(color_index_i color, color_index_j color, i int, j int) bool {
@@ -98,3 +102,7 @@ func sameColorAndIndex(newEntry entry, list []entry) bool {
 
 // NOTE: I want to find a way to break down the giveHint into 2 functions. One give back BLACK hints
 // the other one return only WHITE hints
+
+// func giveHint(indexColor color, indexNumber int, guess combination) hint {
+// 	return hint{4, 0}
+// }
