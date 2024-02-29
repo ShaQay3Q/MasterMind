@@ -119,36 +119,65 @@ func TestSameColorAndIndex(t *testing.T) {
 // NOTE: I want to find a way to break down the giveHint into 2 functions. One give back BLACK hints
 // the other one return only WHITE hints
 
-// func TestGiveHint(t *testing.T) {
-// 	guess := combination{
-// 		Red,
-// 		Blue,
-// 		Yellow,
-// 		Green,
-// 	}
+func TestNeedBlackHint(t *testing.T) {
+	guess := combination{
+		Red,
+		Blue,
+		Yellow,
+		Green,
+	}
 
-// 	answer := combination{
-// 		Red,
-// 		Blue,
-// 		Yellow,
-// 		Green,
-// 	}
+	answer := combination{
+		Red,
+		Blue,
+		Yellow,
+		Green,
+	}
+	i := 1
+	j := 1
+	a := sliceIt(answer, i)
+	g := sliceIt(guess, j)
 
-// 	require.Equal(t, hint{4, 0}, giveHint(guess, answer))
+	require.True(t, needBlackHint(a, g, i, j))
 
-// 	guess = combination{
-// 		Red,
-// 		Blue,
-// 		Yellow,
-// 		Purple,
-// 	}
+	j = 2
+	g = sliceIt(guess, j)
+	require.False(t, needBlackHint(a, g, i, j))
+}
 
-// 	answer = combination{
-// 		Red,
-// 		Blue,
-// 		Yellow,
-// 		Green,
-// 	}
+func TestNeedWhiteHint(t *testing.T) {
 
-// 	require.Equal(t, hint{3, 0}, giveHint(guess, answer))
+	guess := combination{
+		Blue,
+		Red,
+		Yellow,
+		Green,
+	}
+
+	answer := combination{
+		Red,
+		Blue,
+		Yellow,
+		Purple,
+	}
+	i := 0
+	j := 1
+	a := sliceIt(answer, i)
+	g := sliceIt(guess, j)
+
+	require.True(t, needWhiteHint(a, g, i, j))
+
+	j = 2
+	g = sliceIt(guess, j)
+
+	require.False(t, needWhiteHint(a, g, i, j))
+}
+
+// func TestAddWhiteHint(t *testing.T) {
+
+// 	i := 1
+// 	h := hint{}
+
+// 	h.black = addWhiteHint(i)
+// 	require.Equal(t, 2, h.black)
 // }
