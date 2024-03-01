@@ -42,7 +42,7 @@ func compareIndexes(answer combination, guess combination) hint {
 			g := sliceIt(guess, j)
 			switch {
 			case needBlackHint(a, g, i, j):
-				addBlackHint(res.black)
+				res.black += 1
 				break
 			case needWhiteHint(a, g, i, j):
 				list = addToList(a, j, list)
@@ -52,10 +52,6 @@ func compareIndexes(answer combination, guess combination) hint {
 		}
 	}
 	return res
-}
-
-func addBlackHint(i int) int {
-	return i + 1
 }
 
 func addWhiteHint(color color, i int, list []entry) int {

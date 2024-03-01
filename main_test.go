@@ -41,12 +41,22 @@ func TestCompareIndexes03(t *testing.T) {
 
 func TestCompareIndexes04(t *testing.T) {
 
-	answer := combination{Blue, Yellow, Blue, Green}
-	guess := combination{Red, Yellow, Green, Blue}
+	answer := combination{Blue, Yellow, Blue, Yellow}
+	guess := combination{Yellow, Blue, Yellow, Blue}
 
 	res := compareIndexes(answer, guess)
 
-	require.Equal(t, hint{1, 2}, res)
+	require.Equal(t, hint{0, 4}, res)
+}
+
+func TestCompareIndexes05(t *testing.T) {
+
+	answer := combination{Red, Yellow, Blue, Green}
+	guess := combination{Red, Yellow, Blue, Green}
+
+	res := compareIndexes(answer, guess)
+
+	require.Equal(t, hint{4, 0}, res)
 }
 
 func TestCompare(t *testing.T) {
@@ -171,15 +181,6 @@ func TestNeedWhiteHint(t *testing.T) {
 	g = sliceIt(guess, j)
 
 	require.False(t, needWhiteHint(a, g, i, j))
-}
-
-func TestAddBlackHint(t *testing.T) {
-
-	i := 1
-	h := hint{}
-
-	h.black = addBlackHint(i)
-	require.Equal(t, 2, h.black)
 }
 
 // !!! AddWhiteHint is in process
