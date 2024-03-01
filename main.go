@@ -26,6 +26,11 @@ type entry struct {
 	digit int
 }
 
+// something broken in here.
+// my assumption is that the switch-case part s not working as I expected
+// i assume the code was broken and I didn't realize it earlier
+// NEED TO DEBUG THIS BIT LATER
+
 func compareIndexes(answer combination, guess combination) hint {
 
 	var res hint
