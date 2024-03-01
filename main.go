@@ -53,6 +53,12 @@ func addBlackHint(i int) int {
 	return i + 1
 }
 
+func addWhiteHint(color color, i int, list []entry) int {
+
+	list = addToList(color, i, list)
+	return len(addToList(color, i, list))
+}
+
 func needBlackHint(color_index_i color, color_index_j color, i int, j int) bool {
 	return compare(color_index_i, color_index_j) && i == j
 }

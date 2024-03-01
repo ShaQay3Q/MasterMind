@@ -182,12 +182,14 @@ func TestAddBlackHint(t *testing.T) {
 	require.Equal(t, 2, h.black)
 }
 
-// AddWhiteHint is in process
+// !!! AddWhiteHint is in process
 func TestAddWhiteHint(t *testing.T) {
 
 	i := 1
+	color := Blue
+	var list []entry
 	h := hint{}
 
-	h.white = addWhiteHint(i)
-	require.Equal(t, 2, h.white)
+	h.white = addWhiteHint(color, i, list)
+	require.Equal(t, 1, h.white)
 }
