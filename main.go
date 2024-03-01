@@ -26,12 +26,8 @@ type entry struct {
 	digit int
 }
 
-// something broken in here.
-// my assumption is that the switch-case part s not working as I expected
-// i assume the code was broken and I didn't realize it earlier
-// NEED TO DEBUG THIS BIT LATER
-
-func compareIndexes(answer combination, guess combination) hint {
+// compareGuessToAnswer compares the guess and answer and bring backs hints
+func compareGuessToAnswer(answer combination, guess combination) hint {
 
 	var res hint
 	list := []entry{}
@@ -54,16 +50,20 @@ func compareIndexes(answer combination, guess combination) hint {
 	return res
 }
 
+// addWhiteHint keeps a list of white hints and count the list's length to return
+// the number of white hints
 func addWhiteHint(color color, i int, list []entry) int {
 
 	list = addToList(color, i, list)
 	return len(addToList(color, i, list))
 }
 
+// needBlackHint checks for need for black hints
 func needBlackHint(color_index_i color, color_index_j color, i int, j int) bool {
 	return compare(color_index_i, color_index_j) && i == j
 }
 
+// needWhiteHint checks for need for white hints
 func needWhiteHint(color_index_i color, color_index_j color, i int, j int) bool {
 	return compare(color_index_i, color_index_j) && i != j
 }
@@ -80,6 +80,7 @@ func sliceIt(combi combination, i int) color {
 	return color
 }
 
+// addToList keep track of white hints
 func addToList(col color, digit int, list []entry) []entry {
 
 	newEntry := entry{col, digit}
@@ -98,6 +99,7 @@ func addToList(col color, digit int, list []entry) []entry {
 	return list
 }
 
+// sameColorAndIdex check returns true when the colors of certain indexes match
 func sameColorAndIndex(newEntry entry, list []entry) bool {
 	for i := range list {
 		if newEntry.color == list[i].color && newEntry.digit == list[i].digit {
@@ -106,10 +108,3 @@ func sameColorAndIndex(newEntry entry, list []entry) bool {
 	}
 	return false
 }
-
-// NOTE: I want to find a way to break down the giveHint into 2 functions. One give back BLACK hints
-// the other one return only WHITE hints
-
-// func giveHint(indexColor color, indexNumber int, guess combination) hint {
-// 	return hint{4, 0}
-// }

@@ -9,52 +9,52 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestCompareIndexes01(t *testing.T) {
+func TestCompareGuessToAnswer01(t *testing.T) {
 
 	answer := combination{Red, Yellow, Blue, Green}
 	guess := combination{Red, Yellow, Blue, Green}
 
-	res := compareIndexes(answer, guess)
+	res := compareGuessToAnswer(answer, guess)
 
 	require.Equal(t, hint{4, 0}, res)
 }
 
-func TestCompareIndexes02(t *testing.T) {
+func TestCompareGuessToAnswer02(t *testing.T) {
 
 	answer := combination{Red, Yellow, Blue, Green}
 	guess := combination{Red, Yellow, Blue, Purple}
 
-	res := compareIndexes(answer, guess)
+	res := compareGuessToAnswer(answer, guess)
 
 	require.Equal(t, hint{3, 0}, res)
 }
 
-func TestCompareIndexes03(t *testing.T) {
+func TestCompareGuessToAnswer03(t *testing.T) {
 
 	answer := combination{Red, Yellow, Blue, Green}
 	guess := combination{Red, Yellow, Green, Blue}
 
-	res := compareIndexes(answer, guess)
+	res := compareGuessToAnswer(answer, guess)
 
 	require.Equal(t, hint{2, 2}, res)
 }
 
-func TestCompareIndexes04(t *testing.T) {
+func TestCompareGuessToAnswer04(t *testing.T) {
 
 	answer := combination{Blue, Yellow, Blue, Yellow}
 	guess := combination{Yellow, Blue, Yellow, Blue}
 
-	res := compareIndexes(answer, guess)
+	res := compareGuessToAnswer(answer, guess)
 
 	require.Equal(t, hint{0, 4}, res)
 }
 
-func TestCompareIndexes05(t *testing.T) {
+func TestCompareGuessToAnswer05(t *testing.T) {
 
 	answer := combination{Red, Yellow, Blue, Green}
 	guess := combination{Red, Yellow, Blue, Green}
 
-	res := compareIndexes(answer, guess)
+	res := compareGuessToAnswer(answer, guess)
 
 	require.Equal(t, hint{4, 0}, res)
 }
